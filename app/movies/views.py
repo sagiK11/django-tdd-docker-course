@@ -1,7 +1,7 @@
 from django.http import Http404
-from rest_framework.views import APIView
-from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
 from .models import Movie
 from .serializers import MovieSerializer
@@ -14,10 +14,10 @@ class MovieList(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    
-    def get(self, request,format=None):
+
+    def get(self, request, format=None):
         movies = Movie.objects.all()
-        serializer = MovieSerializer(movies,many=True)
+        serializer = MovieSerializer(movies, many=True)
         return Response(serializer.data)
 
 
@@ -32,4 +32,3 @@ class MovieDetail(APIView):
         movie = self.get_object(pk)
         serializer = MovieSerializer(movie)
         return Response(serializer.data)
-

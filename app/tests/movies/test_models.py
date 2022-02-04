@@ -1,13 +1,12 @@
-
-
 import pytest
 
 from movies.models import Movie
 
+
 # Request access to the database
 @pytest.mark.django_db
 def test_movie_model():
-    movie = Movie(title="Raising Arizona",genre="comedy",year="1987")
+    movie = Movie(title="Raising Arizona", genre="comedy", year="1987")
     movie.save()
     assert movie.title == "Raising Arizona"
     assert movie.genre == "comedy"

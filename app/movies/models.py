@@ -1,8 +1,11 @@
 from atexit import register
-from django.db import models
-from django.contrib.auth.models import AbstractUser
+
 from django.contrib import admin
+from django.contrib.auth.models import AbstractUser
+from django.db import models
+
 # Create your models here.
+
 
 class CustomUser(AbstractUser):
     pass
@@ -17,4 +20,3 @@ class Movie(models.Model):
 
     def __str__(self):
         return f"{self.title}"
-
